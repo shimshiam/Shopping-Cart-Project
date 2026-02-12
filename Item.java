@@ -7,7 +7,7 @@ public class Item {
     private double bulkPrice;
 
     // Constructor for items that do not have a bulk price
-    public Item(String name, double price) {}
+    public Item(String name, double price) {
 
         if (price < 0){
             throw new IllegalArgumentException("ERROR: Price is negative");
