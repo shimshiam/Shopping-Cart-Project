@@ -6,7 +6,7 @@ public class Item {
     private int bulkQty;
     private double bulkPrice;
 
-    // Constructor for items that do not have a bulk price
+    // constructor for items that do not have a bulk price
     public Item(String name, double price) {
 
         if (price < 0){
@@ -20,7 +20,7 @@ public class Item {
 
         }
     
-    // Constructor for items that have a bulk price
+    // constructor for items that have a bulk price
     public Item(String name, double price, int bulkQty, double bulkPrice) {
 
         if (price < 0 || bulkPrice < 0 || bulkQty <0){
@@ -33,14 +33,14 @@ public class Item {
         this.bulkQty = bulkQty;
     }
 
-    // Returns the price for the given quantity of this item
+    // returns the price for the given quantity of this item
     public double priceFor(int quantity){ 
         
         if (quantity < 0){
             throw new IllegalArgumentException();
         }
 
-        // If the quantity is greater than or equal to the bulk quantity, then we can apply the bulk price to as 
+        // if the quantity >= bulk quantity, then apply the bulk price to as 
         // many full packages as possible, and then apply the regular price to any remaining items
         if (bulkQty > 0 && quantity >= bulkQty){
             int pkg = quantity / bulkQty;
@@ -48,18 +48,18 @@ public class Item {
             return pkg * bulkPrice + remainder * price;
         }
         else {
-            return quantity * price; // Otherwise, we just apply the regular price to all items
+            return quantity * price; // otherwise, just apply the regular price to all items
 
         }
     }
 
-    // Returns a string representation of this item, including the bulk price if it exists
+    // returns a string representation of this item, including the bulk price if it exists
     public String toString(){
 
-        NumberFormat format = NumberFormat.getCurrencyInstance(); // Format the price as currency
+        NumberFormat format = NumberFormat.getCurrencyInstance(); // format the price as currency
         String output = name + ", " + format.format(price);
 
-        if (bulkQty > 0){ // If there is a bulk price, include it in the string representation
+        if (bulkQty > 0){ // if there is a bulk price, include it in the string representation
             output += " (" + bulkQty + " for " + format.format(bulkPrice) + ")";
         }
 
