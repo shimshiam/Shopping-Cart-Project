@@ -1,6 +1,7 @@
 import java.text.NumberFormat;
 
-public class Item {
+// Represents an item that can be purchased, including its name, price, and optional bulk pricing information
+public class Item { //
     private String name;
     private double price;
     private int bulkQty;
